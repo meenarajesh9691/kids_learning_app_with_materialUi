@@ -14,6 +14,11 @@ const Page = () => {
   const auth = useAuth();
   const [method, setMethod] = useState("email");
 
+  const Admin = {
+    email: "admin@gmail.com",
+    password: 123,
+  };
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -31,8 +36,12 @@ const Page = () => {
         // console.log(res);
 
         if (res.data.message === "login successfully") {
-          alert("kids login successfully");
-          router.push("/");
+          // alert("kids login successfully");
+          router.push("/kidsSubject");
+        }
+        if (res.data.email === "admin@gmail.com") {
+          alert("Admin login successfully");
+          router.push("/dashboard");
         }
 
         if (res.data.status === "invalid") {
@@ -57,7 +66,7 @@ const Page = () => {
 
   const handleSkip = useCallback(() => {
     auth.skip();
-    router.push("/");
+    router.push("/dashboard");
   }, [auth, router]);
 
   return (
@@ -65,6 +74,7 @@ const Page = () => {
       <Head>
         <title>Login | Kids_Learning_App</title>
       </Head>
+
       <Box
         sx={{
           backgroundColor: "background.paper",

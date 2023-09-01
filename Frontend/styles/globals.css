@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------------------Navbar---------(START)-------------- */
+.nav-link {
+  font-size: 25px;
+  /* color: rgb(22, 232, 219); */
+  color: white;
+}
+.nav-link:hover {
+  color: rgb(230, 163, 42);
+}
+
+/* ---------------------Navbar---------(START)-------------- */
+
+/* ----------------------Home page-----(START)-------------------- */
+.box {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(71, 71, 71, 0.568),
+      rgba(74, 74, 74, 0.783)
+    ),
+    url(../public/images/bg-img.png);
+  /* background-image: url(../images/bg-img.png); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.content_box {
+  margin-top: 100px;
+}
+.heading {
+  letter-spacing: 2px;
+  font-size: 50px;
+}
+.edu_clr {
+  color: rgb(230, 163, 42);
+}
+.care_clr {
+  color: rgb(22, 232, 219);
+}
+
+/* ----------------------Home page-----(END)-------------------- */
+
+/*-------------- Form Page-------------(START)----------------*/
+.form_div {
+  border-radius: 10px;
+  padding: 3vmax;
+}
+
+.input {
+  width: 20rem;
+}
+/*-------------- Form Page-------------(START)----------------*/
+
+/*------------- Subject Page-------- (Start)--------------------- */
+.slide_box {
+  width: 90%;
+  height: 50vh;
+  background-color: white;
+  transition: 0.25s linear all;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.slide_box:hover {
+  background-color: rgba(88, 88, 207, 0.71);
+}
+
+.english {
+  color: rgb(239, 26, 105);
+}
+.maths {
+  color: rgb(117, 196, 35);
+}
+.hindi {
+  color: rgb(238, 146, 5);
+}
+
+/*------------- Subject Page-----(End)-------------------- */
+
+/* -----------------Alphabet Page----------------(START)--------*/
+.alphabet_container {
+  width: 100%;
+  /* height: 100vh; */
+  padding-bottom: 96px;
+  background-image: linear-gradient(
+      rgba(120, 120, 120, 0.425),
+      rgba(112, 112, 112, 0.783)
+    ),
+    url(../public/images/maxresdefault.jpg);
+  /* background-image: url(../images/bg-img.png); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.alphabet_btn {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 40px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(rgb(16, 170, 143), rgb(232, 247, 242));
+  box-shadow: 0 0 10px black;
+  transition: 0.25s linear all;
+}
+
+.alphabet_btn:hover {
+  transform: scale(1.2);
+}
+#videoPlayer {
+  width: 100%;
+  height: 25rem;
+}
+/* #alphabet_row {
+  background-color: rgba(255, 255, 255, 0.503);
+} */
+
+/* -----------------Alphabet Page----------------(END)--------*/

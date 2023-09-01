@@ -9,7 +9,14 @@ import { useNProgress } from "src/hooks/use-nprogress";
 import { createTheme } from "src/theme";
 import { createEmotionCache } from "src/utils/create-emotion-cache";
 import "simplebar-react/dist/simplebar.min.css";
-import  UserProvider  from "src/contexts/user/userProvider";
+import UserProvider from "src/contexts/user/userProvider";
+
+// Globals CSS Link
+import "../../styles/globals.css";
+
+// Slick CSS Link
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const clientSideEmotionCache = createEmotionCache();
 
