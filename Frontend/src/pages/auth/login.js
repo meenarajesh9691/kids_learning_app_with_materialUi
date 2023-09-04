@@ -14,10 +14,10 @@ const Page = () => {
   const auth = useAuth();
   const [method, setMethod] = useState("email");
 
-  const Admin = {
-    email: "admin@gmail.com",
-    password: 123,
-  };
+  // const Admin = {
+  //   email: "admin@gmail.com",
+  //   password: 123,
+  // };
 
   const formik = useFormik({
     initialValues: {
@@ -39,8 +39,9 @@ const Page = () => {
           // alert("kids login successfully");
           router.push("/kidsSubject");
         }
+
         if (res.data.email === "admin@gmail.com") {
-          alert("Admin login successfully");
+          // alert("Admin login successfully");
           router.push("/dashboard");
         }
 

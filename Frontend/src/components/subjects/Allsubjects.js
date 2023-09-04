@@ -24,15 +24,26 @@ const Allsubjects = () => {
   const router = useRouter();
   const [user, setUser] = useContext(userContext);
   const [getSubject, setGetSubject] = useState([]);
+  const [image, setImage] = useState('');
 
   // ------------Find All Subject--------
-  const findSubject = async (req, res) => {
-    const allSub = await axios.get("/getSubjects");
-    setGetSubject(allSub.data.data);
-  };
   useEffect(() => {
     findSubject();
   }, []);
+
+  const findSubject = async (req, res) => {
+    const allSub = await axios.get("/getSubjects");
+    setGetSubject(allSub.data.data);
+    setImage(allSub.data.data[0].image);
+
+    //  getSubject.map((index) => {
+    //   console.log(index.image);
+    //   console.log(allSub.data.data[index].image);
+    //   setImage(index.image);
+    // });
+  };
+
+
 
   // ---------------Delete Subject-----------------
   const deleteHandler = async (id) => {
@@ -90,17 +101,17 @@ const Allsubjects = () => {
                         {sub.title}
                       </Typography>
                     </CardContent>
+
                     <CardMedia
                       component="img"
                       height="140"
-                      image="https://img.freepik.com/free-vector/children-holding-english-letters_1308-50014.jpg"
-                      alt="green iguana"
+                      image={`http://localhost:8080/images/${image}`}
                     />
                   </CardActionArea>
                   <CardActions
                     style={{ display: "flex", justifyContent: "space-between", margin: "20px" }}
                   >
-                    <Button size="small" color="success" variant="contained" endIcon={<Edit/>}>
+                    <Button size="small" color="success" variant="contained" endIcon={<Edit />}>
                       <Link
                         href={`/subjects/editSub/${sub._id}`}
                         style={{ textDecoration: "none", color: "white" }}
@@ -112,7 +123,7 @@ const Allsubjects = () => {
                       size="small"
                       color="success"
                       variant="contained"
-                      endIcon={<Delete/>}
+                      endIcon={<Delete />}
                       onClick={() => deleteHandler(sub._id)}
                     >
                       Delete

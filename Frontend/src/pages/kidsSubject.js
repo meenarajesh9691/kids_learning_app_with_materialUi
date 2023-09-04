@@ -9,11 +9,14 @@ import { useRouter } from "next/navigation.js";
 const kidsSubject = () => {
   const router = useRouter();
   const [getSubject, setGetSubject] = useState([]);
+  const [image, setImage] = useState('');
+ 
   // console.log(getSubject);
   // ------------Find All Subject--------
   const findSubject = async (req, res) => {
     const allSub = await axios.get("/getSubjects");
     setGetSubject(allSub.data.data);
+    setImage(allSub.data.data[0].image);
   };
   useEffect(() => {
     findSubject();
@@ -81,7 +84,8 @@ const kidsSubject = () => {
                   <h1 className="english text-center">{sub.title}</h1>
                   <img
                     className="card-img-top"
-                    src="https://img.freepik.com/free-vector/children-holding-english-letters_1308-50014.jpg"
+                    // src="https://img.freepik.com/free-vector/children-holding-english-letters_1308-50014.jpg"
+                    src={`http://localhost:8080/images/${image}`}
                     alt=""
                   />
                 </div>

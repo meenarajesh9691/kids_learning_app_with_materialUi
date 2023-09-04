@@ -4,7 +4,7 @@ import logger from "morgan";
 import cors from "cors";
 import kidsRouter from "./routes/kids.js";
 import subjectRouter from "./routes/subject.js";
-import lessonRouter from "./routes/lesson.js"
+import lessonRouter from "./routes/lesson.js";
 
 const app = express();
 
@@ -18,6 +18,7 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static("public"));
 
 // ------------------session & cookie-parser-----------
 
@@ -33,10 +34,6 @@ app.use(
 );
 
 app.use(cookieParser());
-
-// -----------express file-upload----------
-import fileUpload from "express-fileupload";
-app.use(fileUpload());
 
 // ---------------All Routes--------------
 app.use("/", kidsRouter);

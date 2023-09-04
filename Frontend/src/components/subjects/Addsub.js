@@ -9,32 +9,41 @@ import {
   SvgIcon,
   Stack,
   TextField,
+  FormControl,
+  Input,
 } from "@mui/material";
 import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
 import React, { useState } from "react";
 import axios from "../../../axiosconfig.js";
-import { Box } from "@mui/system";
+import { Box, flexbox } from "@mui/system";
 import { useRouter } from "next/router";
 import { useRouter as page } from "next/navigation.js";
 
 const Addsub = () => {
   const router = useRouter();
   const changePage = page();
-  const [subject, setSubject] = useState([]);
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  // console.log("--------<<<", title);
+  // console.log("--------<<<", image);
   // const router = useRouter();
   const { id } = router.query;
   const onChangeValue = async (e) => {
-    setSubject({ ...subject, [e.target.name]: e.target.value });
+    // setTitle({ ...title, [e.target.name]: e.target.value });
+    setTitle(e.target.value);
   };
 
-  const addSubjectDetails = async () => {
+  const handleClick = async () => {
     try {
-      const sub = await axios.post(`/addSubject/${id}`, subject);
-      if (sub.data.message === "Add Subject") {
-        alert("Subject Created Successfully!!");
-        changePage.push("/subjects/allSub");
-      }
-      // console.log(sub.data.message);
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('image', image);
+    const sub = await axios.post(`/addSubject/${id}`, formData);
+    if (sub.data.message === "Add Subject") {
+      alert("Subject Created Successfully!!");
+      changePage.push("/subjects/allSub");
+    }
+    // console.log(sub.data.message);
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +58,7 @@ const Addsub = () => {
             <Stack alignItems="center" direction="row" spacing={1}></Stack>
           </Stack>
           <div>
-            <Button
+            {/* <Button
               startIcon={
                 <SvgIcon fontSize="small">
                   <PlusIcon />
@@ -58,7 +67,7 @@ const Addsub = () => {
               variant="contained"
             >
               Add
-            </Button>
+            </Button> */}
           </div>
         </Stack>
         <Card style={{ maxWidth: 450, margin: "100px auto", boxShadow: "1px 1px 5px 2px grey" }}>
@@ -68,25 +77,26 @@ const Addsub = () => {
                 Add Subject
               </Typography>
 
-              <TextField
+              <input
+                value={title}
                 onChange={(e) => onChangeValue(e)}
                 name="title"
-                label="Title"
+                // label="Title"
                 // value={subject.title}
                 margin="normal"
               />
 
-              {/* <TextField
-                onChange={(e) => onChangeValue(e)}
-                name="email"
-                label="Email"
+              <input
+                onChange={(e) => setImage(e.target.files[0])}
+                name="image"
+                type="file"
                 // value={subject.email}
-                margin="normal"
-              /> */}
+                // margin="normal"
+              />
               <Button
                 variant="contained"
                 sx={{ marginTop: 3, borderRadius: 3 }}
-                onClick={() => addSubjectDetails()}
+                onClick={handleClick}
               >
                 Add
               </Button>

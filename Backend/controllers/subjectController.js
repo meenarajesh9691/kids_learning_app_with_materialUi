@@ -1,21 +1,27 @@
 import { CatchAsyncError } from "../middlewares/CatchAsyncErrors.js";
 import "dotenv/config";
 import { addSubject } from "../models/subjectSchema.js";
-import { initImageKit as imagekit } from "../utils/imageKit.js";
+// import { initImageKit as imagekit } from "../utils/imageKit.js";
+import path from "path";
+// import { initImageKit } from "../utils/imageKit.js";
 
+// const imageKit = initImageKit();
 // --------------------Subject Create------------------------------
 
 export const subject = CatchAsyncError(async (req, res, next) => {
-  const kids_id = req.params.id;
-  const { title, email } = req.body;
+  // console.log(req.file, req.body);
+  // console.log("==>>>", req.file.filename);
+  // const kids_id = req.params.id;
+  // console.log("=====>>>>>>",req.body.title);
+
   const subData = await addSubject.create({
-    kids_id: kids_id,
-    title,
-    email,
+    kids_id: req.params.id,
+    title: req.body.title,
+    image: req.file.filename,
   });
 
-  // console.log(result);
-  res.status(201).json({ message: "Add Subject", subData });
+  console.log(subData);
+  res.status(201).json({ message: "Add Subject", subData: subData });
 });
 
 // --------------- Get Kids By Subject------------------
@@ -59,10 +65,17 @@ export const editSubject = CatchAsyncError(async (req, res, next) => {
 });
 
 // ------------Avtar Subject------------------
-export const avatarSubject = CatchAsyncError(async (req, res, next) => {
-  const student = await 
-  res.json({file:req.files.avatar});
-});
+// export const avatarSubject = CatchAsyncError(async (req, res, next) => {
+//   const file = req.files.avatar;
+//   const modifiedFileName = `SubjectImage-${Date.now()}${path.extname(
+//     file.name
+//   )}`;
+//   const img = await imageKit.upload({
+//     file: file.data,
+//     fileName: modifiedFileName,
+//   });
+//   res.json(img);
+// });
 
 //-------------------Delete Subject------------------------
 
