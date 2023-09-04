@@ -5,18 +5,17 @@ import Router from "next/router";
 import Navbar from "../components/Navbar.js";
 import axios from "../../axiosconfig.js";
 import { useRouter } from "next/navigation.js";
+import {CardMedia} from '@mui/material'
 
 const kidsSubject = () => {
   const router = useRouter();
   const [getSubject, setGetSubject] = useState([]);
-  const [image, setImage] = useState('');
- 
+
   // console.log(getSubject);
   // ------------Find All Subject--------
   const findSubject = async (req, res) => {
     const allSub = await axios.get("/getSubjects");
     setGetSubject(allSub.data.data);
-    setImage(allSub.data.data[0].image);
   };
   useEffect(() => {
     findSubject();
@@ -73,21 +72,21 @@ const kidsSubject = () => {
           <h1 className="text-center pb-3 text-warning"> SUBJECTS</h1>
 
           <Slider {...settings}>
-            {getSubject.map((sub) => (
+            {getSubject.map((data) => (
               <div
-                key={sub._id}
+                key={data._id}
                 onClick={() => {
-                  router.push(`/kidsLesson/${sub._id}`);
+                  router.push(`/kidsLesson/${data._id}`);
                 }}
               >
                 <div id="lesson" className="slide_box">
-                  <h1 className="english text-center">{sub.title}</h1>
-                  <img
-                    className="card-img-top"
-                    // src="https://img.freepik.com/free-vector/children-holding-english-letters_1308-50014.jpg"
-                    src={`http://localhost:8080/images/${image}`}
-                    alt=""
-                  />
+                  <h1 className="english text-center">{data.title}</h1>
+                
+                    <CardMedia
+                      component="img"
+                      height="250"
+                      image={`http://localhost:8080/images/${data.image}`}
+                    />
                 </div>
               </div>
             ))}

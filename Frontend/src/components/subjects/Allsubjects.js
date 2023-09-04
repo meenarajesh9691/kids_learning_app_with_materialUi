@@ -24,7 +24,6 @@ const Allsubjects = () => {
   const router = useRouter();
   const [user, setUser] = useContext(userContext);
   const [getSubject, setGetSubject] = useState([]);
-  const [image, setImage] = useState('');
 
   // ------------Find All Subject--------
   useEffect(() => {
@@ -34,16 +33,8 @@ const Allsubjects = () => {
   const findSubject = async (req, res) => {
     const allSub = await axios.get("/getSubjects");
     setGetSubject(allSub.data.data);
-    setImage(allSub.data.data[0].image);
-
-    //  getSubject.map((index) => {
-    //   console.log(index.image);
-    //   console.log(allSub.data.data[index].image);
-    //   setImage(index.image);
-    // });
+    // console.log(allSub.data.data);
   };
-
-
 
   // ---------------Delete Subject-----------------
   const deleteHandler = async (id) => {
@@ -81,8 +72,8 @@ const Allsubjects = () => {
         </Stack>
         <Grid container spacing={3}>
           {getSubject[0] ? (
-            getSubject.map((sub) => (
-              <Grid item xs={3} key={sub._id}>
+            getSubject.map((data) => (
+              <Grid item xs={3} key={data._id}>
                 <Card
                   sx={{
                     maxWidth: 345,
@@ -93,19 +84,19 @@ const Allsubjects = () => {
                 >
                   <CardActionArea
                     onClick={() => {
-                      router.push(`/lessons/${sub._id}`);
+                      router.push(`/lessons/${data._id}`);
                     }}
                   >
                     <CardContent>
                       <Typography gutterBottom variant="h3" component="div" textAlign="center">
-                        {sub.title}
+                        {data.title}
                       </Typography>
                     </CardContent>
 
                     <CardMedia
                       component="img"
                       height="140"
-                      image={`http://localhost:8080/images/${image}`}
+                      image={`http://localhost:8080/images/${data.image}`}
                     />
                   </CardActionArea>
                   <CardActions
@@ -113,7 +104,7 @@ const Allsubjects = () => {
                   >
                     <Button size="small" color="success" variant="contained" endIcon={<Edit />}>
                       <Link
-                        href={`/subjects/editSub/${sub._id}`}
+                        href={`/subjects/editSub/${data._id}`}
                         style={{ textDecoration: "none", color: "white" }}
                       >
                         Edit
@@ -124,7 +115,7 @@ const Allsubjects = () => {
                       color="success"
                       variant="contained"
                       endIcon={<Delete />}
-                      onClick={() => deleteHandler(sub._id)}
+                      onClick={() => deleteHandler(data._id)}
                     >
                       Delete
                     </Button>
