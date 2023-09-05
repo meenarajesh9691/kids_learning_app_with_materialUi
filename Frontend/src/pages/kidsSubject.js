@@ -5,7 +5,7 @@ import Router from "next/router";
 import Navbar from "../components/Navbar.js";
 import axios from "../../axiosconfig.js";
 import { useRouter } from "next/navigation.js";
-import {CardMedia} from '@mui/material'
+import { CardMedia } from "@mui/material";
 
 const kidsSubject = () => {
   const router = useRouter();
@@ -56,14 +56,6 @@ const kidsSubject = () => {
     ],
   };
 
-  useEffect(() => {
-    $(() => {
-      $("#lesson").click(() => {
-        Router.push("/english");
-      });
-    });
-  });
-
   return (
     <>
       <div className="box">
@@ -79,14 +71,14 @@ const kidsSubject = () => {
                   router.push(`/kidsLesson/${data._id}`);
                 }}
               >
-                <div id="lesson" className="slide_box">
+                <div className="slide_box">
                   <h1 className="english text-center">{data.title}</h1>
-                
-                    <CardMedia
-                      component="img"
-                      height="250"
-                      image={`http://localhost:8080/images/${data.image}`}
-                    />
+
+                  <CardMedia
+                    component="img"
+                    height="250"
+                    image={`http://localhost:8080/images/${data.image}`}
+                  />
                 </div>
               </div>
             ))}

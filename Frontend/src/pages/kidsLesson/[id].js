@@ -14,6 +14,7 @@ const kidsLesson = () => {
   const findLesson = async (req, res) => {
     const allLesson = await axios.get("/getLessons");
     setGetLesson(allLesson.data.data);
+    // console.log(allLesson.data.data);
   };
   useEffect(() => {
     findLesson();
@@ -78,11 +79,11 @@ const kidsLesson = () => {
                     }}
                   >
                     <div id="lesson" className="slide_box">
-                      <h1 className="english text-center">{lesson.title}</h1>
+                      <h1 className="english text-center">{lesson.lessonTitle}</h1>
                       <img
                         className="card-img-top"
-                        src="https://img.freepik.com/free-vector/children-holding-english-letters_1308-50014.jpg"
-                        alt=""
+                        height="250"
+                        src={`http://localhost:8080/images/${lesson.image}`}
                       />
                     </div>
                   </div>

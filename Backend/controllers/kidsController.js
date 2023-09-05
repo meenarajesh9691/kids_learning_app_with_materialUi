@@ -9,13 +9,14 @@ import "dotenv/config";
 
 export const kidsSignup = CatchAsyncError(async (req, res, next) => {
   // get all data from clientSide
-  const { name, email, password } = req.body;
+  const { name, email, password,phone } = req.body;
   //  encrypt the password
   const encryptedPassword = await bcrypt.hash(password, 10);
   // save the kids in DB
   const kids = await kidsDetails.create({
     name,
     email,
+    phone,
     password: encryptedPassword,
   });
   res.status(201).json({ message: "kids created ", kids });

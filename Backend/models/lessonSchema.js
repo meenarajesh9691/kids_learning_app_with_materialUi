@@ -6,7 +6,8 @@ const lessonSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "subject",
     },
-    title: String,
+    lessonTitle: String,
+    image:String,
     // email: String,
     // avatar: String,
     // avatar:{

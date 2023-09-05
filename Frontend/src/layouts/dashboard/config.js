@@ -29,7 +29,7 @@ export const items = [
   },
   {
     title: 'Subjects',
-    path: '/subjects/allSub',
+    path: '/Admin/subjects/allSub',
     icon: (
       <SvgIcon fontSize="small">
         <ShoppingBagIcon />

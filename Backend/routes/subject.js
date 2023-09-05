@@ -9,7 +9,7 @@ import {
 } from "../controllers/subjectController.js";
 import { isAuthenticated } from "../middlewares/auth.js";
 
-import { upload } from "../helpers/multer.js";
+import { uploadSub } from "../helpers/multerSub.js"
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ const router = express.Router();
 router.post(
   "/addSubject/:id",
   isAuthenticated,
-  upload.single("image"),
+  uploadSub.single("image"),
   subject
 );
 // router.post("/addSubject/populate", isAuthenticated, getKidsBySubject);

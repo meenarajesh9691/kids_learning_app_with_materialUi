@@ -5,12 +5,13 @@ import { addLesson } from "../models/lessonSchema.js";
 // -----------Lesson Create----------------
 
 export const lesson = CatchAsyncError(async (req, res, next) => {
-  const subject_id = req.params.id;
-  const { title, email } = req.body;
+  // console.log(req.file, req.body);
+
+  // console.log("====>>>>>",req.files.video);
   const lessonData = await addLesson.create({
-    subject_id: subject_id,
-    title,
-    email,
+    subject_id: req.params.id,
+    lessonTitle:req.body.lessonTitle,
+    image: req.file.filename,
   });
 
   // console.log(result);
@@ -28,6 +29,7 @@ export const getLessons = CatchAsyncError(async (req, res, next) => {
 // ----------Get Single Lesson----------------------------
 
 export const getLesson = CatchAsyncError(async (req, res, next) => {
+  console.log("====>>>>>",req.files.video);
   const id = req.params.id;
   const oneLesson = await addLesson.findById({ _id: id });
 
