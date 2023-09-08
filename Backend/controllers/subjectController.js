@@ -1,24 +1,33 @@
 import { CatchAsyncError } from "../middlewares/CatchAsyncErrors.js";
 import "dotenv/config";
 import { addSubject } from "../models/subjectSchema.js";
-// import { initImageKit as imagekit } from "../utils/imageKit.js";
-import path from "path";
-// import { initImageKit } from "../utils/imageKit.js";
-
+import fs from "fs"
 // const imageKit = initImageKit();
 // --------------------Subject Create------------------------------
 
 export const subject = CatchAsyncError(async (req, res, next) => {
-  // console.log(req.file, req.body);
+  console.log(req.file);
+  // console.log(req.body);
   // console.log("==>>>", req.file.filename);
   // const kids_id = req.params.id;
   // console.log("=====>>>>>>",req.body.title);
+ 
 
   const subData = await addSubject.create({
+
     kids_id: req.params.id,
     title: req.body.title,
     image: req.file.filename,
   });
+
+  // if(req.file){
+  //   if(req.subject.image !== "defaultImg.jpg"){
+  //     fs.unlinkSync('./public/images' + req.subject.image)
+  //   }
+  //   req.subject.image = req.file.filename
+  //   await req.subject.save()
+    
+  // }
 
   console.log(subData);
   res.status(201).json({ message: "Add Subject", subData: subData });

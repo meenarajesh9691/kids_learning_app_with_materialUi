@@ -153,7 +153,7 @@ const signup = () => {
       // console.log("RES===>>", res);
       if (res.data.message === "kids created ") {
         alert("Kids Created Successfully!");
-        router.push("/auth/login");
+        router.push("/auth/age");
       }
     } catch (error) {
       console.log(error);
@@ -210,7 +210,7 @@ const signup = () => {
                 type="text"
                 className=" input form-control "
                 placeholder="Full Name "
-                name="fullname"
+                name="name"
                 // onChange={handleForm}
                 value={name}
                 onChange={(e) => {
@@ -265,7 +265,7 @@ const signup = () => {
                 className="btn btn-outline-success btn-lg p-20px"
                 onClick={SubmitHandler}
               >
-                Submit
+                Done
               </button>
             </div>
           </form>

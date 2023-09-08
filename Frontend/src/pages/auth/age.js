@@ -187,94 +187,45 @@ import axios from "../../../axiosconfig.js";
 import { useRouter } from "next/navigation";
 import { Button } from "@mui/material";
 
-const login = () => {
+const age = () => {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // console.log(email);
-  // console.log(password);
-  const emailHandler = async (e) => {
+  const [age, setAge] = useState([]);
+  console.log(age);
+
+  const ageHandler = async (e) => {
     e.preventDefault();
-    let kidsLogin = { email, password };
-    // router.push('/auth/verify')
     try {
-      const res = await axios.post("/login", kidsLogin);
-      res.data.email === "admin@gmail.com"
-        ? router.push("/Admin/dashboard")
-        : router.push("/auth/verify");
+      const res = await axios.post("/singup", age);
+      console.log("age===>>", res);
     } catch (error) {
       console.log(error);
     }
   };
-  // const loginHandler = async (e) => {
-  //   e.preventDefault();
-  //   let kidsLogin = { email, password };
-  //   try {
-  //     const res = await axios.post("/login", kidsLogin);
-  //     // console.log("RES===>>", res);
-
-  //     res.data.email === "admin@gmail.com"
-  //       ? router.push("/Admin/dashboard")
-  //       : router.push("/kidsSubject");
-
-  //     // if (res.data.message === "login successfully") {
-  //     //   alert("kids login successfully");
-  //     //   router.push("/kidsSubject");
-  //     // }
-
-  //     // if (res.data.email === "admin@gmail.com") {
-  //     //   alert("Admin login successfully");
-  //     //   router.push("/dashboard");
-  //     // }
-
-  //     if (res.data.status === "invalid") {
-  //       alert("Invalid Password");
-  //       router.push('/auth/login')
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-
-  //     if (error.response.data.message === "Kids Not Found With This Email Address") {
-  //       alert("Kids Not Found With This Email Address");
-  //     }
-  //   }
-  // };
 
   return (
     <>
       <div className="box">
         <Navbar />
         <div className=" form_div bg-light  d-flex flex-column align-items-center position-absolute  top-50 start-50 translate-middle   ">
-          <h1 className="">Login</h1>
+          <h1 className="">Please Add Age</h1>
           <form method="POST">
             <div className="mt-4 mb-4">
               <input
-                type="email"
+                type="number"
                 className="input form-control"
-                name="email"
-                placeholder="Email"
-                // onChange={handleForm}
+                name="age"
+                placeholder="Please Enter Age"
+                value={age}
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  setAge(e.target.value);
                 }}
               />
             </div>
-            <div className="mt-4 mb-4">
-              <input
-                type="password"
-                className="input form-control"
-                name="password"
-                placeholder="Password"
-                // onChange={handleForm}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-            </div>
+            
 
             <div className="container-fluid text-center">
-              <button type="sumit" onClick={emailHandler} className="btn btn-success btn-lg  ">
-                Done
+              <button type="submit" onClick={ageHandler} className="btn btn-success btn-lg  ">
+                Add
               </button>
             </div>
           </form>
@@ -284,4 +235,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default age;

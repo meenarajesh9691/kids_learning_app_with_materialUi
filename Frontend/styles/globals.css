@@ -25,10 +25,7 @@ body {
 .box {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(
-      rgba(71, 71, 71, 0.568),
-      rgba(74, 74, 74, 0.783)
-    ),
+  background-image: linear-gradient(rgba(71, 71, 71, 0.568), rgba(74, 74, 74, 0.783)),
     url(../public/images/bg-img.png);
   /* background-image: url(../images/bg-img.png); */
   background-size: cover;
@@ -97,10 +94,7 @@ body {
   width: 100%;
   /* height: 100vh; */
   padding-bottom: 96px;
-  background-image: linear-gradient(
-      rgba(120, 120, 120, 0.425),
-      rgba(112, 112, 112, 0.783)
-    ),
+  background-image: linear-gradient(rgba(120, 120, 120, 0.425), rgba(112, 112, 112, 0.783)),
     url(../public/images/maxresdefault.jpg);
   /* background-image: url(../images/bg-img.png); */
   background-size: cover;
@@ -132,3 +126,88 @@ body {
 } */
 
 /* -----------------Alphabet Page----------------(END)--------*/
+
+/* ----------------------------kids/kidsHome----------------------------- */
+
+.circle1 {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(0, 0, 152, 0.577);
+  transition: 0.25s linear all;
+  cursor: pointer;
+}
+
+.circle1:hover {
+  box-shadow: 0px 0px 10px white;
+}
+.circle2 {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 35, 1, 0.577);
+  transition: 0.25s linear all;
+  cursor: pointer;
+}
+
+.circle2:hover {
+  box-shadow: 0px 0px 10px white;
+}
+
+.icon1 {
+  width: 70px;
+  height: 70px;
+  background-image: url(../public/images/learn_img.png);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.icon2 {
+  width: 70px;
+  height: 70px;
+  background-image: url(../public/images/home_img.png);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+
+
+/* ----------------------------kids/kidsub---------------- */
+
+.subBox_img {
+height: 50%;
+background-color: #fff;
+  /* background-image: url(../public/images/kidsSub_Bg_img.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+} 
+.learn_text{
+  font-size: 70px;
+  font-weight: 600;
+  color: rgb(65, 148, 242);
+  text-align:center;
+  letter-spacing: 10px;
+}
+.subBox_content{
+height: 50%;
+background-color:rgb(188, 221, 236);
+border-top: 2px solid rgb(162, 162, 162);
+}
+
+.subBox{
+  margin: 20px 0px 10px 20px;
+  text-align: center;
+  /* width: 10%; */
+  /* height: 30vh; */
+  background-color: #fff;
+  border: 2px solid rgb(162, 162, 162);
+  display: inline-block;
+  transition: 0.25s linear all;
+  cursor: pointer;
+}
+.subBox:hover{
+  box-shadow: 0px 0px 20px rgb(238, 130, 130);
+  transform: scale(1.1);
+}
+

@@ -59,7 +59,7 @@ const kidsSubject = () => {
   return (
     <>
       <div className="box">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="container-lg mt-4 rounded-5 p-5 bg-danger">
           <h1 className="text-center pb-3 text-warning"> SUBJECTS</h1>
 

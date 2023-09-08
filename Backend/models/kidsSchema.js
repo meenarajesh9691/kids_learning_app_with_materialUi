@@ -7,6 +7,8 @@ const kidsSchema = new mongoose.Schema(
   email:String,
   phone:String,
   password:String,
+  age:String,
+  otp:String,
  },
 
   { timestamps: true }

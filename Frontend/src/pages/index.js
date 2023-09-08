@@ -6,7 +6,7 @@ const index = () => {
   return (
     <>
       <div className="box">
-        <Navbar />
+        {/* <Navbar /> */}
         <Home />
       </div>
     </>
